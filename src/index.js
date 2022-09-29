@@ -17,6 +17,7 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
+    // TODO 完了機能の実装
     alert("完了");
   });
 
