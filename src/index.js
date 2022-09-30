@@ -17,8 +17,16 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
-    // TODO 完了機能の実装
-    alert("完了");
+    // 押された削除ボタンの親タグ（div）を未完了リストから削除
+    deleteFromIncompleteList(deleteButton.parentNode);
+
+    // // divタグの子要素に各要素を設定
+    // div.appendChild(li);
+    // div.appendChild(completeButton);
+    // div.appendChild(deleteButton);
+
+    // // 完了リストに追加（画面の要素を書き換える）
+    // document.getElementById("complete-area").appendChild(div);
   });
 
   // button(削除)タグ生成
@@ -26,8 +34,7 @@ const onClickAdd = () => {
   deleteButton.innerText = "削除";
   deleteButton.addEventListener("click", () => {
     // 押された削除ボタンの親タグ（div）を未完了リストから削除
-    const deleteTerget = deleteButton.parentNode;
-    document.getElementById("incomplete-list").removeChild(deleteTerget);
+    deleteFromIncompleteList(deleteButton.parentNode);
   });
 
   // divタグの子要素に各要素を設定
@@ -37,6 +44,11 @@ const onClickAdd = () => {
 
   // 未完了リストに追加（画面の要素を書き換える）
   document.getElementById("incomplete-list").appendChild(div);
+};
+
+// 未完了リストから指定の要素を削除
+const deleteFromIncompleteList = (target) => {
+  document.getElementById("incomplete-list").removeChild(target);
 };
 
 document
