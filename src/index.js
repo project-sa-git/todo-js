@@ -17,7 +17,17 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
-    // 押された削除ボタンの親タグ（div）を未完了リストから削除
+    // 完了リストに追加する要素
+    // まずは関連ボタンの親要素を取得する
+    const addTarget = completeButton.parentNode;
+    console.log(addTarget);
+
+    // 次にタグの内容（TODO内容テキスト）を取得
+    const text = addTarget.firstElementChild.innerText;
+    console.log(text);
+
+    // divタグ以下を使いまわしたいので、divタグを初期化
+
     deleteFromIncompleteList(deleteButton.parentNode);
 
     // // divタグの子要素に各要素を設定
