@@ -17,26 +17,33 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
+    // 押された完了ボタンの親タグ(div)を未完了リストから削除
+    deleteFromIncompleteList(deleteButton.parentNode);
+
     // 完了リストに追加する要素
     // まずは関連ボタンの親要素を取得する
     const addTarget = completeButton.parentNode;
-    console.log(addTarget);
 
     // 次にタグの内容（TODO内容テキスト）を取得
     const text = addTarget.firstElementChild.innerText;
-    console.log(text);
 
-    // divタグ以下を使いまわしたいので、divタグを初期化
+    // dev以下を初期化
+    addTarget.textContent = null;
 
-    deleteFromIncompleteList(deleteButton.parentNode);
+    // liタグ生成
+    const li = document.createElement("li");
+    li.innerText = text;
 
-    // // divタグの子要素に各要素を設定
-    // div.appendChild(li);
-    // div.appendChild(completeButton);
-    // div.appendChild(deleteButton);
+    // 戻すbuttonタグ作成
+    const backButton = document.createElement("button");
+    backButton.innerText = "戻す";
 
-    // // 完了リストに追加（画面の要素を書き換える）
-    // document.getElementById("complete-area").appendChild(div);
+    // divタグの子要素に各要素を設定
+    addTarget.appendChild(li);
+    addTarget.appendChild(backButton);
+
+    // 完了リストに追加
+    document.getElementById("complete-list").appendChild(addTarget);
   });
 
   // button(削除)タグ生成
